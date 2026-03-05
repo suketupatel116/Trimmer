@@ -4,6 +4,7 @@ const addSelectionButton = document.getElementById("add-selection");
 const clearRulesButton = document.getElementById("clear-rules");
 const copyOutputButton = document.getElementById("copy-output");
 const copyOutputInline = document.getElementById("copy-output-inline");
+const downloadOfflineBtn = document.getElementById("download-offline");
 const rulesList = document.getElementById("rules-list");
 const statusText = document.getElementById("status");
 
@@ -227,6 +228,17 @@ copyOutputButton.addEventListener("click", async () => {
 
 if (copyOutputInline) {
   copyOutputInline.addEventListener('click', () => copyOutputButton.click());
+}
+
+if (downloadOfflineBtn) {
+  downloadOfflineBtn.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = '/prompt-trimmer.html';
+    a.download = 'prompt-trimmer.html';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  });
 }
 
 
