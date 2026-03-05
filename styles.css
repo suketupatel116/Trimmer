@@ -1,0 +1,412 @@
+:root {
+  --bg: #f7f8f5;
+  --surface: #ffffffcc;
+  --surface-solid: #ffffff;
+  --text: #1f2a37;
+  --muted: #5f6a76;
+  --accent: #146c7d;
+  --accent-strong: #0d4e5f;
+  --line: #d4dce5;
+  --danger: #a63535;
+  --radius: 16px;
+  --shadow: 0 10px 28px rgba(25, 39, 56, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 15% 20%, #f4e5c6, transparent 35%),
+    radial-gradient(circle at 80% 25%, #d6edf0, transparent 38%),
+    linear-gradient(160deg, #f7f8f5 0%, #eef3f8 100%);
+}
+
+body {
+  padding: 24px;
+  overflow-x: hidden;
+}
+
+.bg-shape {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 999px;
+  filter: blur(28px);
+  opacity: 0.28;
+}
+
+.bg-shape-a {
+  width: 260px;
+  height: 260px;
+  right: -40px;
+  top: -70px;
+  background: #f0a86f;
+}
+
+.bg-shape-b {
+  width: 230px;
+  height: 230px;
+  left: -50px;
+  bottom: -50px;
+  background: #7ac7cf;
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  /* use viewport percentage for wider appearance on large screens */
+  width: min(80vw, 1400px);
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+  animation: fade-up 280ms ease-out;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+h1,
+h2 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.app-header p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.header-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  border: 1px solid var(--line);
+  color: var(--accent-strong);
+  background: #f4fbfd;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.logo {
+  font-size: 1.6rem;
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#fff4f4,#f0fbff);
+  box-shadow: 0 6px 16px rgba(20,35,45,0.06);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+button {
+  border: none;
+  background: var(--accent);
+  color: white;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  background: var(--accent-strong);
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--accent-strong);
+  border: 1px solid var(--line);
+}
+
+button.ghost:hover {
+  background: #edf5f7;
+}
+
+#status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.rules-panel {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--surface-solid);
+}
+
+.rules-list {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 20px;
+}
+
+.rule-chip {
+  background: #fceaea;
+  border: 1px solid #edc4c4;
+  color: #5f1f1f;
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rule-chip button {
+  background: transparent;
+  color: var(--danger);
+  border: none;
+  font-size: 0.85rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.pane {
+  display: grid;
+  gap: 8px;
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+
+.pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+}
+
+.icon-btn svg {
+  fill: var(--muted);
+}
+
+.icon-btn:hover {
+  background: #f2fbfd;
+}
+
+textarea,
+.output {
+  width: 100%;
+  min-height: 58vh;
+  border: 1px solid #d8e0e7;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: "IBM Plex Mono", "Cascadia Mono", ui-monospace, monospace;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  background: #fcfdff;
+  color: #22313f;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.output {
+  margin: 0;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.token {
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 120ms ease;
+}
+
+.token:hover {
+  background: #dff1f4;
+}
+
+.token.selected {
+  background: #ffdfe0;
+  outline: 2px solid rgba(166, 30, 30, 0.07);
+}
+
+/* Touch-friendly tokens */
+.token {
+  display: inline-block;
+  padding: 3px 8px;
+  margin: 0 2px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+/* Make interactive controls stack and enlarge on small screens */
+@media (max-width: 720px) {
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls button,
+  .icon-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-badges {
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .usage-list {
+    display: none;
+  }
+
+  textarea,
+  .output {
+    font-size: 1rem;
+  }
+}
+
+/* Larger font and spacing on very large screens */
+@media (min-width: 1400px) {
+  :root {
+    --radius: 18px;
+  }
+
+  textarea,
+  .output {
+    font-size: 1rem;
+  }
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 12px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  textarea,
+  .output {
+    min-height: 36vh;
+  }
+  .app-shell {
+    width: 100%;
+  }
+}
+
+.usage-list {
+  margin: 6px 0 0 0;
+  padding-left: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.2;
+  list-style: none;
+}
+
+.usage-list li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 4px;
+}
+
+.usage-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+/* Ensure the usage list text aligns left of its container so bullets sit correctly */
+.usage-list {
+  text-align: left;
+  align-self: flex-end;
+  max-width: 340px;
+}
+
+.header-badges {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: right;
+}

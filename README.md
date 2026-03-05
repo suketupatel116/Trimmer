@@ -1,0 +1,39 @@
+# Prompt Trimmer
+
+A tiny offline-first UI to trim repeated words or phrases from long text before sending to AI tools.
+
+## Why
+
+- Remove sensitive values (passwords, API keys, hostnames, service names)
+- Shrink text before sharing with AI tools
+- Keep everything local in your browser (no backend, no network calls)
+
+## Run
+
+Open `index.html` directly in your browser.
+
+Or, if you want a local static server:
+
+```bash
+python3 -m http.server 8080
+```
+
+Then visit `http://localhost:8080`.
+
+## Usage
+
+1. Paste text in the left pane.
+2. Add remove rules by either:
+   - selecting text and clicking **Remove Selected Text**
+   - clicking a token in the right pane
+3. The output pane updates immediately and removes every occurrence of each rule.
+4. Use **Copy Output** when ready.
+
+## Notes
+
+- Matching is exact and case-sensitive.
+- Rules remove plain text occurrences globally.
+- Works fully offline once the page is loaded.
+ - Matching is exact and case-sensitive. (Optionally we can add case-insensitive rules.)
+ - Rules remove plain text occurrences globally; blank lines are removed to reduce tokens.
+ - Works fully offline once the page is loaded.

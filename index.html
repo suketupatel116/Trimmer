@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Trimmer</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-a" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-b" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="app-header">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="logo" aria-hidden="true">✂️</span>
+          <div>
+            <h1>Prompt Trimmer</h1>
+            <p>Paste text, select sensitive words/phrases, and trim occurrences offline.</p>
+          </div>
+        </div>
+        <div class="header-badges">
+          <div>
+            <span class="badge">100% Local</span>
+            <span class="badge">No Server</span>
+          </div>
+          <ul class="usage-list" aria-label="Usage tips">
+            <li>Paste text into the left Input pane</li>
+            <li>Click a token to remove all occurrences</li>
+            <li>Shift+Click to select a range; Ctrl (PC) / Cmd (⌘) (Mac) + Click to toggle tokens</li>
+            <li>Click <strong>Copy Output</strong> when ready</li>
+          </ul>
+        </div>
+      </header>
+
+      <section class="controls" aria-label="Trimming Controls">
+        <button id="add-selection" type="button">Remove Selected Text</button>
+        <button id="add-selected-rule" type="button" class="ghost">Add Selected Tokens</button>
+        <button id="clear-rules" type="button" class="ghost">Clear Rules</button>
+        <button id="copy-output" type="button" class="ghost">Copy Output</button>
+        <p id="status" role="status" aria-live="polite">No rules yet.</p>
+      </section>
+
+      <section class="rules-panel" aria-label="Active Remove Rules">
+        <h2>Active Rules</h2>
+        <div id="rules-list" class="rules-list"></div>
+      </section>
+
+      <section class="workspace" aria-label="Text Work Area">
+        <article class="pane">
+          <h2>Input</h2>
+          <textarea
+            id="input-text"
+            spellcheck="false"
+            placeholder="Paste your stack trace or logs here..."
+          ></textarea>
+        </article>
+
+        <article class="pane">
+          <div class="pane-header">
+            <h2>Output</h2>
+            <button id="copy-output-inline" class="icon-btn" title="Copy Output">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v12h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+              </svg>
+            </button>
+          </div>
+          <pre id="output-text" class="output" tabindex="0"></pre>
+          <p class="hint">Tip: click a single word in Output to remove all occurrences instantly.</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
