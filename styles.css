@@ -227,6 +227,11 @@ button.ghost:hover {
   gap: 12px;
 }
 
+.pane-header h2 {
+  margin: 0;
+  flex: 1;
+}
+
 .icon-btn {
   background: transparent;
   border: none;
@@ -302,10 +307,13 @@ textarea {
     align-items: stretch;
   }
 
-  .controls button,
-  .icon-btn {
+  .controls button {
     width: 100%;
     justify-content: center;
+  }
+
+  .icon-btn {
+    width: auto;
   }
 
   .header-badges {
@@ -399,8 +407,7 @@ textarea {
 /* Ensure the usage list text aligns left of its container so bullets sit correctly */
 .usage-list {
   text-align: left;
-  align-self: flex-end;
-  max-width: 340px;
+  max-width: 320px;
 }
 
 .header-badges {
@@ -408,5 +415,19 @@ textarea {
   gap: 12px;
   align-items: flex-start;
   flex-direction: column;
-  text-align: right;
+  text-align: left;
+}
+
+/* Stack header on narrow screens to avoid overlap */
+@media (max-width: 900px) {
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .header-badges {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
