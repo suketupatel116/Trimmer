@@ -37,3 +37,8 @@ Then visit `http://localhost:8080`.
  - Matching is exact and case-sensitive. (Optionally we can add case-insensitive rules.)
  - Rules remove plain text occurrences globally; blank lines are removed to reduce tokens.
  - Works fully offline once the page is loaded.
+
+## GitHub Pages / Downloadable bundle
+
+- A fully self-contained `prompt-trimmer.html` is included in the repository root. You can download and open it directly — it runs fully offline.
+- To host on GitHub Pages, enable Pages on the repository (set the branch to `main` and root `/`) — `prompt-trimmer.html` will be served at `/prompt-trimmer.html` and is downloadable by users.
