@@ -212,7 +212,8 @@ button.ghost:hover {
 }
 
 .pane {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
   background: var(--surface-solid);
   border: 1px solid var(--line);
@@ -253,7 +254,7 @@ button.ghost:hover {
 textarea,
 .output {
   width: 100%;
-  min-height: 58vh;
+  height: 58vh;
   border: 1px solid #d8e0e7;
   border-radius: 10px;
   padding: 12px;
@@ -262,6 +263,13 @@ textarea,
   line-height: 1.45;
   background: #fcfdff;
   color: #22313f;
+}
+
+/* Ensure textareas inside panes don't push headers down */
+.pane textarea,
+.pane .output {
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 textarea {
