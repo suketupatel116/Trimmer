@@ -21,7 +21,7 @@ jobs:
 
       - name: Upload Pages artifact
         id: upload
-        uses: actions/upload-pages-artifact@v7
+        uses: actions/upload-pages-artifact@v4
         with:
           path: './'
 
